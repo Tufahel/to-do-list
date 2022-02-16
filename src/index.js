@@ -33,6 +33,10 @@ const clearBtn = document.createElement('button');
 clearBtn.className = 'clear-btn';
 clearBtn.textContent = 'Clear Checked Items';
 
+taskContainer.innerHTML = `<li class="heading">
+<input type="text" placeholder="Add something">
+<button class="reload"><i class="fa-solid fa-arrow-rotate-right"></i></button></li>`;
+
 const render = (toDo) => {
   const li = document.createElement('li');
   const check = document.createElement('input');

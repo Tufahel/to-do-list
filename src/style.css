@@ -14,6 +14,16 @@ ul {
   text-align: center;
 }
 
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading input {
+  width: 100%;
+  height: 7vh;
+}
+
 .list-container {
   display: flex;
   justify-content: space-around;
@@ -31,7 +41,7 @@ ul {
 .clear-btn {
   background-color: rgb(242, 242, 242);
   border: 0.5px solid gray;
-  height: 5vh;
+  height: 7vh;
   cursor: pointer;
 }
 
