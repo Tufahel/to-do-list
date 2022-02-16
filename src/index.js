@@ -2,7 +2,7 @@ import './style.css';
 
 const toDoTasks = [
   {
-    description: 'Read books',
+    description: 'Read books in room',
     completed: false,
     id: 1,
   },
@@ -12,12 +12,12 @@ const toDoTasks = [
     id: 0,
   },
   {
-    description: 'Study online',
+    description: 'Study online by zoom',
     completed: false,
     id: 2,
   },
   {
-    description: 'Play with friends',
+    description: 'Play with school friends',
     completed: false,
     id: 4,
   },
