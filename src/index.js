@@ -3,27 +3,27 @@ import './style.css';
 const toDoTasks = [
   {
     description: 'Read books',
-    progress: false,
+    completed: false,
     id: 1,
   },
   {
     description: 'Workout in the gym',
-    progress: false,
+    completed: false,
     id: 0,
   },
   {
     description: 'Study online',
-    progress: false,
+    completed: false,
     id: 2,
   },
   {
     description: 'Play with friends',
-    progress: false,
+    completed: false,
     id: 4,
   },
   {
     description: 'Timepass with family',
-    progress: false,
+    completed: false,
     id: 3,
   },
 ];
