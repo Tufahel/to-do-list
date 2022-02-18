@@ -20,7 +20,7 @@ For the link to the live demo, [Click here](https://tufahel.github.io/to-do-list
 ## Getting Started
 To get a local copy up and running you just need to follow the following steps;
 - Clone this repository with
-git clone https://github.com/Tufahel using your terminal or command line.
+git clone https://github.com/Tufahel/to-do-list.git using your terminal or command line.
 - Run code . to open it in vscode
 - Run "npm install"
 - Run "npm run build"
