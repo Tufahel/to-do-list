@@ -1,51 +1,131 @@
 body {
-  background-color: whitesmoke;
-}
-
-h1 {
-  text-align: center;
-}
-
-ul {
-  list-style: none;
-}
-
-.toDo-div {
-  text-align: center;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-}
-
-.heading input {
   width: 100%;
-  height: 7vh;
+  background-color: antiquewhite;
+  margin: 0;
 }
 
-.list-container {
+main {
+  width: 100%;
+  margin: 50px auto;
+}
+
+i {
+  cursor: pointer;
+  color: gray;
+}
+
+.to-do-list {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  margin: 2% 20%;
+  flex-flow: column;
+  list-style-type: none;
+  background-color: white;
+  margin: 100px;
+  padding: 0;
 }
 
-.task {
+.to-do-list > * {
+  display: flex;
+  border-bottom: 1px solid gray;
+  flex: 1;
+  padding: 16px;
+}
+
+.title {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title h3 {
+  margin: 0;
+}
+
+#form {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 0.5px solid gray;
 }
 
-.clear-btn {
-  background-color: rgb(242, 242, 242);
-  border: 0.5px solid gray;
-  height: 7vh;
+#form input {
+  border: 1px hidden;
+  flex-basis: 90%;
+  outline: none;
+  font-size: 1rem;
+  color: black;
+}
+
+#form input[placeholder] {
+  font-style: italic;
+}
+
+#form button {
+  border: 1px hidden;
+  background-color: white;
   cursor: pointer;
 }
 
-.check-box,
-.reload {
+#form i {
+  transform: rotate(0.5turn);
+}
+
+.list-section {
+  display: none;
+  padding: 0;
+}
+
+.allTodos {
+  padding: 0;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  flex: 1;
+  padding: 1rem;
+}
+
+.todo:hover {
   cursor: pointer;
+  background-color: whitesmoke;
+}
+
+.todo div {
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo p {
+  flex-basis: 95%;
+  margin: 0;
+  color: black;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+#checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+#clear-completed {
+  background-color: whitesmoke;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#clear {
+  border: 1px hidden;
+  background-color: ghostwhite;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.edit {
+  margin-right: 10px;
 }
