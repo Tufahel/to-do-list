@@ -14,10 +14,23 @@
     <title>To-do-List</title>
 <script defer src="main.js"></script></head>
 <body>
-    <h1 class="title">To do list</h1>
     <div class="toDo-div">
-        <p>Today's task</p>
-        <ul class="list-container"></ul>
+        <ul class="to-do-list">
+            <li class="title">
+                <h3>Today's To do</h3>
+                <i class="fas fa-sync-alt"></i>
+            </li>
+            <li class="add-to-do">
+                <form action="#" id="form">
+                    <input type="text" placeholder="add to do list" id="new-todo" required>
+                    <button type="submit"><i class="fa fa-solid fa-arrow-left" id="add"></i></button>
+                </form>
+            </li>
+            <li class="list-section"></li>
+            <li id="clear-completed">
+                <button type="button" id="clear">clear all completed</button>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
