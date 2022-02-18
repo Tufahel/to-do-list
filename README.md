@@ -1,14 +1,16 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Title-Info
-> This project is about a ........
+> This project is basically a to do list. Where we can add, remove and edit tasks.
 
 
 # ScreenShots/GIF
+- ![](gif-todo.gif)
 
 
 ## Built With
 - HTML
+- CSS
 - Javascript
 - VScode
 
@@ -20,19 +22,17 @@ To get a local copy up and running you just need to follow the following steps;
 - Clone this repository with
 git clone https://github.com/Tufahel using your terminal or command line.
 - Run code . to open it in vscode
+- Run "npm install"
+- Run "npm run build"
+- Run "npm start"
+- Now site will automatically run into your default browser.
 
 ## Authors
 
-👤 **Author1**
+👤 **Author**
 
-- GitHub: [@](https://github.com)
-- Twitter: [@](https://twitter.com)
-- LinkedIn: [@](https://www.linkedin.com)
-
-👤 **Author2**
-
-- GitHub: [@](https://github.com)
-- LinkedIn: [@](https://bd.linkedin.com)
+- GitHub: [@Tufahel](https://github.com/Tufahel)
+- LinkedIn: [Tufahel Ahmed](https://bd.linkedin.com/in/tufahel-ahmed-972884203)
 
 ## 🤝 Contributing
 
@@ -43,13 +43,3 @@ Feel free to check the [issues page](../../issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.

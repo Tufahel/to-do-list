@@ -1,73 +1,147 @@
 import './style.css';
 
-const toDoTasks = [
-  {
-    description: 'Read books in room',
-    completed: false,
-    id: 1,
-  },
-  {
-    description: 'Workout in the gym',
-    completed: false,
-    id: 0,
-  },
-  {
-    description: 'Study online by zoom',
-    completed: false,
-    id: 2,
-  },
-  {
-    description: 'Play with school friends',
-    completed: false,
-    id: 4,
-  },
-  {
-    description: 'Timepass with family',
-    completed: false,
-    id: 3,
-  },
-];
+class TaskList {
+  todos = [];
 
-const taskContainer = document.querySelector('.list-container');
-const clearBtn = document.createElement('button');
-clearBtn.className = 'clear-btn';
-clearBtn.textContent = 'Clear Checked Items';
+  save() {
+    const todos = JSON.stringify(this.todos);
+    localStorage.setItem('todos', todos);
+  }
 
-taskContainer.innerHTML = `<li class="heading">
-<input type="text" placeholder="Add something">
-<button class="reload"><i class="fa-solid fa-arrow-rotate-right"></i></button></li>`;
+  add(description) {
+    const todo = {
+      description,
+      completed: false,
+      index: this.todos.length + 1,
+    };
+    this.todos.push(todo);
+    this.save();
+  }
 
-const render = (toDo) => {
-  const li = document.createElement('li');
-  const check = document.createElement('input');
-  const toDoDescription = document.createElement('p');
-  const showMore = document.createElement('i');
+  delete(id) {
+    this.todos.splice(id - 1, 1);
+    this.todos.forEach((i) => {
+      if (i.index > id) {
+        i.index -= 1;
+      }
+    });
+    this.save();
+  }
 
-  li.className = 'task';
-  check.className = 'check-box';
-  toDoDescription.className = 'toDo-description';
+  getReserved() {
+    this.todos = JSON.parse(localStorage.getItem('todos'));
+  }
 
-  showMore.classList.add('fa-solid');
-  showMore.classList.add('fa-ellipsis-vertical');
+  edit(value, index) {
+    this.todos[index - 1].description = value;
+    this.save();
+  }
 
-  check.setAttribute('value', 1);
-  check.type = 'checkbox';
+  completed(status, index) {
+    this.todos[index - 1].completed = status;
+    this.save();
+  }
 
-  toDoDescription.textContent = toDo.description;
+  clearCompleted() {
+    this.todos = this.todos.filter((a) => a.completed === false);
+    for (let i = 0; i < this.todos.length; i += 1) {
+      this.todos[i].index = i + 1;
+    }
+    this.save();
+  }
+}
 
-  li.appendChild(check);
-  li.appendChild(toDoDescription);
-  li.appendChild(showMore);
+const todo = new TaskList();
+const listSection = document.querySelector('.list-section');
 
-  taskContainer.appendChild(li);
+const create = () => {
+  listSection.replaceChildren();
+  if (todo.todos.length > 0) {
+    listSection.style.display = 'block';
+    const listContainer = document.createElement('ul');
+    listContainer.className = 'allTodos';
+    listSection.appendChild(listContainer);
+    todo.todos.map((a) => {
+      const list = document.createElement('li');
+      list.className = 'todo';
+
+      const descriptionContainer = document.createElement('div');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = 'checkbox';
+      if (a.completed === true) {
+        checkbox.checked = 'checked';
+      }
+
+      checkbox.onclick = (e) => {
+        todo.completed(e.target.checked, a.index);
+      };
+
+      descriptionContainer.appendChild(checkbox);
+
+      const descript = document.createElement('p');
+      descript.id = 'task-description';
+      descript.textContent = a.description;
+      descriptionContainer.appendChild(descript);
+      list.appendChild(descriptionContainer);
+
+      const editIcon = document.createElement('i');
+      editIcon.className = 'fa fa-solid fa-pen-to-square';
+      list.appendChild(editIcon);
+
+      const deleteIcon = document.createElement('i');
+      deleteIcon.className = 'fa fa-solid fa-trash';
+      deleteIcon.id = a.index;
+
+      list.onclick = () => {
+        descript.contentEditable = 'true';
+        list.style.backgroundColor = 'whitesmoke';
+        list.appendChild(deleteIcon);
+        editIcon.style.display = 'none';
+        list.addEventListener('keydown', () => {
+          todo.edit(descript.innerHTML, a.index);
+        });
+      };
+      deleteIcon.onclick = () => {
+        todo.delete(a.index);
+        todo.save();
+        create();
+      };
+      listContainer.append(list);
+      return list;
+    });
+    listSection.appendChild(listContainer);
+  }
 };
 
-toDoTasks
-  .sort((one, two) => one.id - two.id)
-  .forEach((toDo) => {
-    render(toDo);
-  });
+const form = document.getElementById('form');
 
-if (toDoTasks.length) {
-  taskContainer.appendChild(clearBtn);
-}
+const getAdded = () => {
+  const description = document.getElementById('new-todo').value;
+  if (description != '') {
+    todo.add(description);
+    create();
+    form.reset();
+  }
+};
+
+const populate = () => {
+  if (localStorage.getItem('todos')) {
+    todo.getReserved();
+    create();
+  } else {
+    create();
+  }
+};
+
+const clearCompletedBtn = document.getElementById('clear-completed');
+const clearCompleted = () => {
+  clearCompletedBtn.addEventListener('click', () => {
+    todo.clearCompleted();
+    create();
+  });
+};
+
+populate();
+form.addEventListener('submit', getAdded);
+clearCompleted();
