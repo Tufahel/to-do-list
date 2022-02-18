@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Title-Info
-> This project is basically a to do list. Where we can add, remove and edit tasks.
+> This project is basically a to do list application. Where we can add, remove and edit tasks.
 
 
 # ScreenShots/GIF
